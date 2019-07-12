@@ -22,15 +22,15 @@ feature 'Entering players' do
   feature 'See Player 2 hit points' do
     scenario 'it allows Player 1 to see Player 2`s hit points' do
       sign_in_and_play
-      expect(page).to have_content 'Charlie HP'
+      expect(page).to have_content 'Charlie 100 HP'
     end
   end
 
   feature 'Attack Player 2' do
-    scenario 'it allows me to attack Player 2 and get conformation' do
+    scenario 'it allows me to attack Player 2 and get confirmation' do
       sign_in_and_play
       click_button 'Karate Chopskies'
-      expect(page).to have_content "You Karate Chopskied Charlie"
+      expect(page).to have_content "Richie Karate Chopskied Charlie"
     end
   end
 
@@ -43,4 +43,19 @@ feature 'Entering players' do
     end
   end
 
+  feature 'Switch player turns' do
+    context 'seeing whose turn it is' do
+      scenario 'switch turn from player one to player two' do
+        sign_in_and_play
+        expect(page).to have_content "Richie's turn"
+      end
+
+      scenario 'after player one attacks' do
+        sign_in_and_play
+        click_button 'Karate Chopskies'
+        expect(page).not_to have_content "Richie's turn"
+        expect(page).to have_content "Charlie's turn"
+      end
+    end
+  end
 end

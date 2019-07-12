@@ -1,6 +1,8 @@
 <html>
   <body style="background-color:rgb(221, 8, 92)">
-    <h1>You Karate Chopskied <%=@game.player_2.name%></h1>
+    <h1> <%=@game.player_1.name%> Karate Chopskied <%=@game.player_2.name%></h1>
+    <p><%=@game.player_1.name%> HP: <%=@game.player_1.hit_points%></p>
     <p><%=@game.player_2.name%> HP: <%=@game.player_2.hit_points%></p>
+    <p><%= @game.current_turn.name %>'s turn</p>
   </body>
 </html>
